@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (video.paused) {
             video.play();
         }
-        volume.textContent = slider.value;
+        volume.textContent = slider.value + "%";
 
 	});
 
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Change the volume based on the slider and update the volume information.
     slider.addEventListener("input", function () {
         video.volume = parseFloat(this.value / 100); // volume ranges from 0 - 1
-        volume.textContent = this.value;
+        volume.textContent = this.value + "%";
     });
 	
 });
