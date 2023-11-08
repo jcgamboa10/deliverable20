@@ -20,6 +20,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	});
 
+    // Slow the current video speed by 10% each time the button is clicked and log the new speed to the console.  
+    document.querySelector("#slower").addEventListener("click", function() {
+        video.playbackRate = video.playbackRate - .1;
+        console.log(video.playbackRate);
+	});
+
+    document.querySelector("#faster").addEventListener("click", function() {
+        video.playbackRate = video.playbackRate + .1;
+        console.log(video.playbackRate);
+	});
+
+
     // Pauses the video
 	document.querySelector("#pause").addEventListener("click", function() {
         if (!video.paused) {
@@ -27,12 +39,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 	});
 
+    // Skip ahead button
+	document.querySelector("#skip").addEventListener("click", function() {
+        if (video.currentTime + 10 >= video.duration) {
+            video.currentTime = 0;
+        } else {
+            video.currentTime = video.currentTime + 10;
+        }
+        console.log(video.currentTime);
+	});
+
     // Mute/unmute the video and update the text in the button
     document.querySelector("#mute").addEventListener("click", function() {
         if (video.muted) {
             video.muted = false;
+            document.querySelector("#mute").innerHTML = "Mute";
         } else {
             video.muted = true;
+            document.querySelector("#mute").innerHTML = "Unmute";
+
         }
     });
 
